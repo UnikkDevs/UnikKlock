@@ -1,0 +1,6 @@
+{
+  "name": "WakeQuest",
+  "description": "Smart wake-up alarm with brain challenges, stopwatch, timer, world clock, sleep cycles, and light/dark themes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
