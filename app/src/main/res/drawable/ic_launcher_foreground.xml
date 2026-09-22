@@ -1,8 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:width="66dp"
-        android:height="66dp"
-        android:drawable="@drawable/ic_wakequest_logo"
-        android:gravity="center" />
-</layer-list>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Subtle Dial Glow -->
+    <path
+        android:pathData="M54,54m-27,0a27,27 0,1 1,54 0a27,27 0,1 1,-54 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="54"
+                android:centerY="54"
+                android:gradientRadius="27"
+                android:startColor="#2500D4FE"
+                android:endColor="#00000000"
+                android:type="radial" />
+        </aapt:attr>
+    </path>
+
+    <!-- Top Left Bell -->
+    <path
+        android:pathData="M 33,35 C 30,30 33,23 39,22 C 45,21 47,28 44,33"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="28"
+                android:startY="20"
+                android:endX="48"
+                android:endY="36"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#00F0FF" />
+                <item android:offset="1.0" android:color="#38BDF8" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Top Right Bell -->
+    <path
+        android:pathData="M 64,33 C 61,28 63,21 69,22 C 75,23 78,30 75,35"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="60"
+                android:startY="20"
+                android:endX="80"
+                android:endY="36"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#A855F7" />
+                <item android:offset="1.0" android:color="#EC4899" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Top Alarm Hammer/Button -->
+    <path
+        android:pathData="M 51,26 L 57,26"
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 54,26 L 54,29"
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="2.5" />
+
+    <!-- Left Foot -->
+    <path
+        android:pathData="M 39,74 L 33,83"
+        android:strokeColor="#00F0FF"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+
+    <!-- Right Foot -->
+    <path
+        android:pathData="M 69,74 L 75,83"
+        android:strokeColor="#EC4899"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+
+    <!-- Main Clock Outer Ring (Cyan to Magenta/Purple gradient) -->
+    <path
+        android:pathData="M54,54m-23,0a23,23 0,1 1,46 0a23,23 0,1 1,-46 0"
+        android:strokeWidth="4"
+        android:strokeLineCap="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="31"
+                android:startY="31"
+                android:endX="77"
+                android:endY="77"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#00F0FF" />
+                <item android:offset="0.5" android:color="#6366F1" />
+                <item android:offset="1.0" android:color="#D946EF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Dial Tick: 12 o'clock -->
+    <path
+        android:pathData="M 54,36 L 54,40"
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+    <!-- Dial Tick: 6 o'clock -->
+    <path
+        android:pathData="M 54,68 L 54,72"
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+    <!-- Dial Tick: 9 o'clock -->
+    <path
+        android:pathData="M 36,54 L 40,54"
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+    <!-- Dial Tick: 3 o'clock -->
+    <path
+        android:pathData="M 68,54 L 72,54"
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+    <!-- Central Lightning Bolt (White with sharp edges) -->
+    <path
+        android:pathData="M 56,43 L 47,54 L 52.5,54 L 48.5,65 L 59.5,52.5 L 54,52.5 Z"
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#00F0FF"
+        android:strokeWidth="0.75"
+        android:strokeLineJoin="round" />
+
+</vector>
