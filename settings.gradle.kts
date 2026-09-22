@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "WakeQuest"
+rootProject.name = "UnikKlock"
 
 include(":app")
