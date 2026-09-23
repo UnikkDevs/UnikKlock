@@ -52,6 +52,9 @@ import com.example.ui.screens.StatisticsScreen
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.unit.dp
 import com.example.ui.screens.ClockToolsScreen
 import com.example.ui.theme.AppTheme
 import com.example.ui.theme.AppThemeMode
@@ -190,7 +193,17 @@ fun WakeQuestApp(
     bottomBar = {
       NavigationBar(
         containerColor = colors.surface,
-        modifier = Modifier.testTag("main_bottom_nav")
+        tonalElevation = 4.dp,
+        modifier = Modifier
+          .testTag("main_bottom_nav")
+          .drawBehind {
+            drawLine(
+              color = colors.surfaceBorder.copy(alpha = if (colors.isDark) 0.5f else 0.8f),
+              start = Offset(0f, 0f),
+              end = Offset(size.width, 0f),
+              strokeWidth = 1.dp.toPx()
+            )
+          }
       ) {
         NavigationTab.entries.forEach { tab ->
           val isSelected = currentTab == tab
@@ -205,11 +218,11 @@ fun WakeQuestApp(
             },
             label = { Text(tab.label) },
             colors = NavigationBarItemDefaults.colors(
-              selectedIconColor = Color.White,
-              selectedTextColor = Color.White,
-              unselectedIconColor = Color.White.copy(alpha = 0.7f),
-              unselectedTextColor = Color.White.copy(alpha = 0.7f),
-              indicatorColor = colors.accentViolet.copy(alpha = 0.45f)
+              selectedIconColor = if (colors.isDark) Color.White else colors.accentViolet,
+              selectedTextColor = if (colors.isDark) Color.White else colors.accentViolet,
+              unselectedIconColor = if (colors.isDark) Color.White.copy(alpha = 0.7f) else colors.textSecondary,
+              unselectedTextColor = if (colors.isDark) Color.White.copy(alpha = 0.7f) else colors.textSecondary,
+              indicatorColor = if (colors.isDark) colors.accentViolet.copy(alpha = 0.45f) else colors.surfaceElevated
             ),
             modifier = Modifier.testTag("nav_tab_${tab.name.lowercase()}")
           )

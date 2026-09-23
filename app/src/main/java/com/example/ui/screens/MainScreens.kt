@@ -1115,18 +1115,7 @@ fun SettingsScreen(
             }
           }
 
-          Spacer(modifier = Modifier.height(10.dp))
-          Text(
-            text = when (currentThemeMode) {
-              AppThemeMode.DARK -> "Color Hunt palette with Obsidian (#090040), Velvet Violet (#471396), Neon Violet (#B13BFF) & Radiant Gold (#FFCC00)"
-              AppThemeMode.LIGHT -> "Pastel theme with mint (#DEFCF9), periwinkle (#CADEFC), lavender (#C3BEF0) & lilac (#CCA8E9)"
-              AppThemeMode.SYSTEM -> "Automatically synchronizes with your device's day/night system theme"
-            },
-            style = MaterialTheme.typography.bodySmall,
-            color = TextSecondary
-          )
-
-          Spacer(modifier = Modifier.height(10.dp))
+          Spacer(modifier = Modifier.height(12.dp))
 
           // Palette swatch preview
           val swatches = if (themeColors.isDark) {
@@ -1175,170 +1164,6 @@ fun SettingsScreen(
                   fontSize = 10.sp
                 )
               }
-            }
-          }
-        }
-      }
-    }
-
-    // Clock Numbers Color Style Card
-    item {
-      Card(
-        colors = CardDefaults.cardColors(containerColor = DarkSurface),
-        shape = RoundedCornerShape(20.dp),
-        border = CardDefaults.outlinedCardBorder().copy(
-          brush = androidx.compose.ui.graphics.SolidColor(DarkSurfaceBorder)
-        ),
-        modifier = Modifier.fillMaxWidth().testTag("clock_color_card")
-      ) {
-        Column(modifier = Modifier.padding(18.dp)) {
-          Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-              imageVector = Icons.Default.Schedule,
-              contentDescription = null,
-              tint = themeColors.clockNeonRed,
-              modifier = Modifier.size(22.dp)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-              text = "CLOCK NUMBERS COLOR",
-              style = MaterialTheme.typography.titleMedium,
-              fontWeight = FontWeight.Black,
-              color = TextPrimary
-            )
-          }
-
-          Spacer(modifier = Modifier.height(4.dp))
-          Text(
-            text = "Choose your neon glowing number style for all clocks and alarms",
-            style = MaterialTheme.typography.bodySmall,
-            color = TextSecondary
-          )
-
-          Spacer(modifier = Modifier.height(14.dp))
-
-          // 3 Mode selection buttons: Neon Duo, Neon Red, Neon Purple
-          Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-          ) {
-            ClockColorMode.values().forEach { mode ->
-              val isSelected = currentClockColorMode == mode
-              val activeBorderColor = when (mode) {
-                ClockColorMode.NEON_RED -> themeColors.clockNeonRed
-                ClockColorMode.NEON_PURPLE -> themeColors.clockNeonPurple
-                ClockColorMode.NEON_DUO -> themeColors.clockNeonRed
-              }
-
-              Card(
-                modifier = Modifier
-                  .weight(1f)
-                  .clip(RoundedCornerShape(12.dp))
-                  .clickable { onClockColorModeChanged(mode) },
-                colors = CardDefaults.cardColors(
-                  containerColor = if (isSelected) DarkSurfaceElevated else DarkSurface
-                ),
-                border = CardDefaults.outlinedCardBorder().copy(
-                  brush = androidx.compose.ui.graphics.SolidColor(
-                    if (isSelected) activeBorderColor else DarkSurfaceBorder
-                  )
-                )
-              ) {
-                Column(
-                  modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 12.dp, horizontal = 4.dp),
-                  horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                  // Icon swatch
-                  Row(horizontalArrangement = Arrangement.Center) {
-                    when (mode) {
-                      ClockColorMode.NEON_RED -> {
-                        Box(
-                          modifier = Modifier
-                            .size(16.dp)
-                            .clip(CircleShape)
-                            .background(themeColors.clockNeonRed)
-                        )
-                      }
-                      ClockColorMode.NEON_PURPLE -> {
-                        Box(
-                          modifier = Modifier
-                            .size(16.dp)
-                            .clip(CircleShape)
-                            .background(themeColors.clockNeonPurple)
-                        )
-                      }
-                      ClockColorMode.NEON_DUO -> {
-                        Row(horizontalArrangement = Arrangement.spacedBy(3.dp)) {
-                          Box(
-                            modifier = Modifier
-                              .size(13.dp)
-                              .clip(CircleShape)
-                              .background(themeColors.clockNeonRed)
-                          )
-                          Box(
-                            modifier = Modifier
-                              .size(13.dp)
-                              .clip(CircleShape)
-                              .background(themeColors.clockNeonPurple)
-                          )
-                        }
-                      }
-                    }
-                  }
-                  Spacer(modifier = Modifier.height(8.dp))
-                  Text(
-                    text = mode.label,
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                    color = if (isSelected) activeBorderColor else TextSecondary,
-                    textAlign = TextAlign.Center
-                  )
-                }
-              }
-            }
-          }
-
-          Spacer(modifier = Modifier.height(14.dp))
-
-          // Live glowing clock preview
-          Box(
-            modifier = Modifier
-              .fillMaxWidth()
-              .clip(RoundedCornerShape(12.dp))
-              .background(themeColors.background)
-              .border(1.dp, DarkSurfaceBorder, RoundedCornerShape(12.dp))
-              .padding(14.dp),
-            contentAlignment = Alignment.Center
-          ) {
-            Row(verticalAlignment = Alignment.Bottom) {
-              Text(
-                text = "07",
-                style = MaterialTheme.typography.headlineMedium.copy(shadow = NeonClockShadow),
-                fontWeight = FontWeight.Black,
-                color = neonClockHourColor()
-              )
-              Text(
-                text = ":",
-                style = MaterialTheme.typography.headlineMedium.copy(shadow = NeonClockShadow),
-                fontWeight = FontWeight.Black,
-                color = neonClockSeparatorColor()
-              )
-              Text(
-                text = "30",
-                style = MaterialTheme.typography.headlineMedium.copy(shadow = NeonClockShadow),
-                fontWeight = FontWeight.Black,
-                color = neonClockMinuteColor()
-              )
-              Spacer(modifier = Modifier.width(6.dp))
-              Text(
-                text = "AM",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color = neonClockMinuteColor(),
-                modifier = Modifier.padding(bottom = 2.dp)
-              )
             }
           }
         }
@@ -1490,7 +1315,7 @@ fun SettingsScreen(
           }
           Spacer(modifier = Modifier.height(6.dp))
           Text(
-            text = "WakeQuest runs 100% offline. All your alarms, history, and wake statistics are stored locally on your device in an encrypted Room SQLite database.",
+            text = "UnikKlock runs 100% offline. All your alarms, history, and wake statistics are stored locally on your device in an encrypted Room SQLite database.",
             style = MaterialTheme.typography.bodySmall,
             color = TextSecondary
           )
@@ -1507,13 +1332,13 @@ fun SettingsScreen(
         horizontalAlignment = Alignment.CenterHorizontally
       ) {
         Text(
-          text = "WakeQuest",
+          text = "UnikKlock",
           style = MaterialTheme.typography.titleMedium,
           fontWeight = FontWeight.Black,
           color = TextPrimary
         )
         Text(
-          text = "“Wake up. Think. Conquer.”",
+          text = "“Smart Time. Bold Awakening.”",
           style = MaterialTheme.typography.bodySmall,
           color = NeonCyan,
           fontWeight = FontWeight.SemiBold

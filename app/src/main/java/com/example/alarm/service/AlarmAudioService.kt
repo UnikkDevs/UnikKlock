@@ -100,7 +100,7 @@ class AlarmAudioService : Service() {
 
   private fun createNotificationChannel() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-      val name = "WakeQuest Active Alarms"
+      val name = "UnikKlock Active Alarms"
       val desc = "Urgent full-screen alarms requiring challenge completion"
       val importance = NotificationManager.IMPORTANCE_HIGH
       val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {

@@ -33,7 +33,7 @@ class WakeQuestApplication : Application() {
       // Urgent Alarm Channel
       val alarmChannel = NotificationChannel(
         AlarmAudioService.CHANNEL_ID,
-        "WakeQuest Alarms",
+        "UnikKlock Alarms",
         NotificationManager.IMPORTANCE_HIGH
       ).apply {
         description = "High-priority wake-up alarms with interactive mental challenges"

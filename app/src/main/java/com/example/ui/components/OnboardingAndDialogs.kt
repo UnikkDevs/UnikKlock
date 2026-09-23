@@ -110,13 +110,13 @@ fun OnboardingDialog(
         }
         Spacer(modifier = Modifier.height(12.dp))
         Text(
-          text = "WakeQuest",
+          text = "UnikKlock",
           style = MaterialTheme.typography.headlineSmall,
           fontWeight = FontWeight.Black,
           color = TextPrimary
         )
         Text(
-          text = "“Wake up. Think. Conquer.”",
+          text = "“Smart Time. Bold Awakening.”",
           style = MaterialTheme.typography.bodySmall,
           color = NeonCyan,
           fontWeight = FontWeight.Bold
@@ -138,7 +138,7 @@ fun OnboardingDialog(
         )
 
         Text(
-          text = "WakeQuest eliminates the temptation of mindless snooze. When an alarm rings, the only way to silence it is to complete your mental challenge.",
+          text = "UnikKlock eliminates the temptation of mindless snooze. When an alarm rings, the only way to silence it is to complete your mental challenge.",
           style = MaterialTheme.typography.bodyMedium,
           color = TextSecondary,
           textAlign = TextAlign.Center

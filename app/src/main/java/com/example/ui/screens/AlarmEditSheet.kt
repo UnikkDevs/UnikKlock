@@ -774,7 +774,7 @@ fun AlarmEditSheet(
           val updatedAlarm = (alarm ?: AlarmEntity(hour = hour, minute = minute)).copy(
             hour = hour,
             minute = minute,
-            name = name.ifBlank { "WakeQuest Alarm" },
+            name = name.ifBlank { "UnikKlock Alarm" },
             daysOfWeek = selectedDays.joinToString(","),
             soundType = selectedSound,
             volume = volume.toInt(),

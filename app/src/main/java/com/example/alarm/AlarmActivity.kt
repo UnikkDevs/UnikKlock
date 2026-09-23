@@ -246,7 +246,7 @@ fun AlarmRingingScreen(
       coroutineScope.launch {
         repository.recordCompletion(
           alarmId = alarm?.id ?: -1L,
-          alarmName = alarm?.name ?: "WakeQuest Alarm",
+          alarmName = alarm?.name ?: "UnikKlock Alarm",
           durationSeconds = duration,
           challengeType = currentChallengeType.title,
           difficulty = difficulty.label,
