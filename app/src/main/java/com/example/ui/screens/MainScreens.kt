@@ -1118,7 +1118,7 @@ fun SettingsScreen(
           Spacer(modifier = Modifier.height(10.dp))
           Text(
             text = when (currentThemeMode) {
-              AppThemeMode.DARK -> "Midnight & Crimson theme with crimson (#FF204E), wine (#A0153E), plum (#5D0E41) & navy (#00224D)"
+              AppThemeMode.DARK -> "Color Hunt palette with Obsidian (#090040), Velvet Violet (#471396), Neon Violet (#B13BFF) & Radiant Gold (#FFCC00)"
               AppThemeMode.LIGHT -> "Pastel theme with mint (#DEFCF9), periwinkle (#CADEFC), lavender (#C3BEF0) & lilac (#CCA8E9)"
               AppThemeMode.SYSTEM -> "Automatically synchronizes with your device's day/night system theme"
             },
@@ -1131,10 +1131,10 @@ fun SettingsScreen(
           // Palette swatch preview
           val swatches = if (themeColors.isDark) {
             listOf(
-              Triple("Navy", themeColors.darkNavy, Color.White),
-              Triple("Plum", themeColors.darkPlum, Color.White),
-              Triple("Wine", themeColors.darkWine, Color.White),
-              Triple("Crimson", themeColors.darkCrimson, Color.White)
+              Triple("Obsidian", themeColors.darkNavy, Color.White),
+              Triple("Violet", themeColors.darkPlum, Color.White),
+              Triple("Neon", themeColors.darkWine, Color.White),
+              Triple("Gold", themeColors.accentAmber, Color(0xFF090040))
             )
           } else {
             listOf(

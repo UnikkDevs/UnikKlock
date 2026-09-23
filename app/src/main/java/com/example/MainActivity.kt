@@ -34,6 +34,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -204,11 +205,11 @@ fun WakeQuestApp(
             },
             label = { Text(tab.label) },
             colors = NavigationBarItemDefaults.colors(
-              selectedIconColor = colors.accentCyan,
-              selectedTextColor = colors.accentCyan,
-              unselectedIconColor = colors.textSecondary,
-              unselectedTextColor = colors.textSecondary,
-              indicatorColor = colors.accentViolet.copy(alpha = 0.25f)
+              selectedIconColor = Color.White,
+              selectedTextColor = Color.White,
+              unselectedIconColor = Color.White.copy(alpha = 0.7f),
+              unselectedTextColor = Color.White.copy(alpha = 0.7f),
+              indicatorColor = colors.accentViolet.copy(alpha = 0.45f)
             ),
             modifier = Modifier.testTag("nav_tab_${tab.name.lowercase()}")
           )

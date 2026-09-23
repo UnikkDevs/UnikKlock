@@ -2,56 +2,64 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// User Dark Palette (#FF204E, #A0153E, #5D0E41, #00224D)
-val CrimsonNeon = Color(0xFFFF204E)        // #FF204E - Blazing vibrant crimson/coral red accent
-val CrimsonWine = Color(0xFFA0153E)        // #A0153E - Rich wine/ruby red surface elevated & highlights
-val CrimsonPlum = Color(0xFF5D0E41)        // #5D0E41 - Deep velvet plum surface/cards
-val CrimsonMidnight = Color(0xFF00224D)    // #00224D - Midnight dark navy canvas background
+// =========================================================================
+// Palette: https://colorhunt.co/palette/090040471396b13bffffcc00
+// #090040 - Midnight Obsidian Blue (Canvas Background)
+// #471396 - Royal Velvet Violet (Cards, Containers, Surfaces)
+// #B13BFF - Electric Neon Violet (Elevated cards, active highlights, badges)
+// #FFCC00 - Bright Radiant Gold / Amber (Accents, active pills, indicators, stars)
+// =========================================================================
 
-// Dark Theme Palette - Powered by user dark palette
-val DeepNavy = CrimsonMidnight             // Background canvas (#00224D)
-val DarkSurface = CrimsonPlum              // Main surfaces / Cards (#5D0E41)
-val DarkSurfaceElevated = CrimsonWine      // Elevated cards / Chips (#A0153E)
-val DarkSurfaceBorder = Color(0xFF7A1440)  // Harmonized card/divider border
+val MidnightObsidian = Color(0xFF090040) // #090040 - Main background canvas
+val VelvetViolet = Color(0xFF471396)     // #471396 - Main cards & surface components
+val NeonViolet = Color(0xFFB13BFF)       // #B13BFF - Elevated surfaces, outlines & glowing accents
+val RadiantGold = Color(0xFFFFCC00)      // #FFCC00 - Radiant energetic gold accent
 
-// User Pastel Palette (#DEFCF9, #CADEFC, #C3BEF0, #CCA8E9)
-val PastelMintCyan = Color(0xFFDEFCF9)     // #DEFCF9 - Soft pale aqua/mint
-val PastelPeriwinkle = Color(0xFFCADEFC)   // #CADEFC - Soft periwinkle blue
-val PastelLavender = Color(0xFFC3BEF0)     // #C3BEF0 - Pastel lavender purple
-val PastelLilac = Color(0xFFCCA8E9)        // #CCA8E9 - Pastel soft violet/orchid
+// Dark Theme Surfaces & Dividers
+val DeepNavy = MidnightObsidian
+val DarkSurface = VelvetViolet
+val DarkSurfaceElevated = Color(0xFF5A1CBA) // Rich luminous violet for elevated surfaces
+val DarkSurfaceBorder = Color(0xFF7028E4)   // Harmonized crisp violet border
 
-// Deep accessible variants for text and high-contrast controls
-val PastelLilacDeep = Color(0xFF7B42B8)     // Deep accessible violet for light theme
-val PastelCyanDeep = Color(0xFF007C8A)      // Deep accessible teal/cyan for light theme
+// User Pastel Palette for Light Theme
+val PastelMintCyan = Color(0xFFDEFCF9)     // #DEFCF9
+val PastelPeriwinkle = Color(0xFFCADEFC)   // #CADEFC
+val PastelLavender = Color(0xFFC3BEF0)     // #C3BEF0
+val PastelLilac = Color(0xFFCCA8E9)        // #CCA8E9
 
-// Light Theme Palette - Using user pastel theme
+// Deep accessible variants for text and high-contrast controls in Light Theme
+val PastelLilacDeep = Color(0xFF7B42B8)
+val PastelCyanDeep = Color(0xFF007C8A)
+
+// Light Theme Palette
 val LightBackground = PastelMintCyan
 val LightSurface = Color(0xFFFFFFFF)
 val LightSurfaceElevated = PastelPeriwinkle
 val LightSurfaceBorder = PastelLavender
-val LightTextPrimary = Color(0xFF1F1A3A)    // High-contrast deep plum/navy
-val LightTextSecondary = Color(0xFF4E476B)  // Elegant slate violet
+val LightTextPrimary = Color(0xFF1F1A3A)
+val LightTextSecondary = Color(0xFF4E476B)
 val LightTextTertiary = Color(0xFF736B94)
 val LightTextDisabled = Color(0xFFA099BD)
 
 // Vibrant Accent Colors
-val ElectricViolet = Color(0xFF8A53FF)
-val ElectricVioletLight = Color(0xFFA77DFF)
-val ElectricVioletDim = PastelLilacDeep
-val NeonCyan = Color(0xFF00E5FF)
-val NeonCyanDim = PastelCyanDeep
-val EnergyAmber = Color(0xFFFFB300)
-val EnergyOrange = Color(0xFFFF6D00)
+val ElectricViolet = NeonViolet
+val ElectricVioletLight = Color(0xFFC96BFF)
+val ElectricVioletDim = VelvetViolet
+val NeonCyan = RadiantGold                 // Highlight accent mapped to Radiant Gold
+val NeonCyanDim = Color(0xFFE6B800)
+val EnergyAmber = RadiantGold              // #FFCC00
+val EnergyOrange = Color(0xFFFF9500)
 val DangerRed = Color(0xFFFF3366)
 val SuccessGreen = Color(0xFF00E676)
 
-// Neon Clock Colors (Neon Red & Neon Purple)
-val NeonRed = Color(0xFFFF204E)            // Electric vibrant neon red
-val NeonPurple = Color(0xFFDF20F0)         // Electric vibrant neon purple / fuchsia
-val NeonPurpleLight = Color(0xFFE040FB)    // Bright luminous violet highlight
+// Clock Neon Colors
+val NeonGold = RadiantGold                 // #FFCC00
+val NeonVioletGlow = NeonViolet            // #B13BFF
+val NeonRed = RadiantGold
+val NeonPurple = NeonViolet
 
-// Default / Dark text
-val TextPrimary = Color(0xFFFFF0F3)    // Clean warm porcelain white
-val TextSecondary = Color(0xFFE2B2C2)  // Soft rose mist (accessible on plum & navy)
-val TextTertiary = Color(0xFFA66F85)   // Muted dusty rose
-val TextDisabled = Color(0xFF6E4057)   // Subdued plum wine
+// Pure Crisp White for All Text and Icons per user specification
+val TextPrimary = Color(0xFFFFFFFF)        // Pure crisp white (#FFFFFF)
+val TextSecondary = Color(0xFFF0E6FF)      // Pristine bright soft white (#F0E6FF)
+val TextTertiary = Color(0xFFD4BFFF)       // High-legibility lavender white (#D4BFFF)
+val TextDisabled = Color(0xFF9E84D4)       // Muted legible violet-tinted white

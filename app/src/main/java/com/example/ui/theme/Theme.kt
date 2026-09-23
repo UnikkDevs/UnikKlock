@@ -23,9 +23,9 @@ enum class AppThemeMode(val title: String) {
 }
 
 enum class ClockColorMode(val label: String, val description: String) {
-  NEON_RED("Neon Red", "Electric neon red digits (#FF204E)"),
-  NEON_PURPLE("Neon Purple", "Vibrant neon purple digits (#DF20F0)"),
-  NEON_DUO("Neon Duo", "Dual-tone neon red hours & neon purple minutes")
+  NEON_RED("Radiant Gold", "Bright golden numbers (#FFCC00)"),
+  NEON_PURPLE("Electric Violet", "Vibrant neon violet digits (#B13BFF)"),
+  NEON_DUO("Gold & Violet Duo", "Dual-tone gold hours & neon violet minutes")
 }
 
 data class AppThemeColors(
@@ -40,12 +40,12 @@ data class AppThemeColors(
   val accentCyan: Color,
   val accentViolet: Color,
   val accentAmber: Color,
-  val clockNeonRed: Color = NeonRed,
-  val clockNeonPurple: Color = NeonPurple,
-  val darkNavy: Color = CrimsonMidnight,
-  val darkPlum: Color = CrimsonPlum,
-  val darkWine: Color = CrimsonWine,
-  val darkCrimson: Color = CrimsonNeon,
+  val clockNeonRed: Color = NeonGold,
+  val clockNeonPurple: Color = NeonViolet,
+  val darkNavy: Color = MidnightObsidian,
+  val darkPlum: Color = VelvetViolet,
+  val darkWine: Color = DarkSurfaceElevated,
+  val darkCrimson: Color = NeonViolet,
   val pastelMint: Color = PastelMintCyan,
   val pastelPeriwinkle: Color = PastelPeriwinkle,
   val pastelLavender: Color = PastelLavender,
@@ -87,7 +87,7 @@ fun neonClockSeparatorColor(): Color {
   return when (LocalClockColorMode.current) {
     ClockColorMode.NEON_RED -> colors.clockNeonRed
     ClockColorMode.NEON_PURPLE -> colors.clockNeonPurple
-    ClockColorMode.NEON_DUO -> colors.clockNeonPurple
+    ClockColorMode.NEON_DUO -> Color.White
   }
 }
 
@@ -111,8 +111,8 @@ val LocalAppThemeColors = staticCompositionLocalOf {
     textSecondary = TextSecondary,
     textTertiary = TextTertiary,
     textDisabled = TextDisabled,
-    accentCyan = CrimsonNeon,
-    accentViolet = CrimsonWine,
+    accentCyan = RadiantGold,
+    accentViolet = NeonViolet,
     accentAmber = EnergyAmber,
     isDark = true
   )
@@ -125,25 +125,25 @@ object AppTheme {
 }
 
 private val WakeQuestDarkColorScheme = darkColorScheme(
-  primary = CrimsonNeon,
-  onPrimary = Color.White,
-  primaryContainer = CrimsonWine,
+  primary = RadiantGold,
+  onPrimary = MidnightObsidian,
+  primaryContainer = VelvetViolet,
   onPrimaryContainer = Color.White,
-  secondary = CrimsonNeon,
-  onSecondary = CrimsonMidnight,
-  secondaryContainer = CrimsonPlum,
-  onSecondaryContainer = TextPrimary,
-  tertiary = CrimsonWine,
-  onTertiary = Color.White,
-  background = DeepNavy,
-  onBackground = TextPrimary,
-  surface = DarkSurface,
-  onSurface = TextPrimary,
+  secondary = NeonViolet,
+  onSecondary = Color.White,
+  secondaryContainer = DarkSurfaceElevated,
+  onSecondaryContainer = Color.White,
+  tertiary = RadiantGold,
+  onTertiary = MidnightObsidian,
+  background = MidnightObsidian,
+  onBackground = Color.White,
+  surface = VelvetViolet,
+  onSurface = Color.White,
   surfaceVariant = DarkSurfaceElevated,
-  onSurfaceVariant = TextSecondary,
+  onSurfaceVariant = Color.White,
   outline = DarkSurfaceBorder,
   error = DangerRed,
-  onError = TextPrimary
+  onError = Color.White
 )
 
 private val WakeQuestLightColorScheme = lightColorScheme(
@@ -178,19 +178,23 @@ fun MyApplicationTheme(
 
   val appThemeColors = if (darkTheme) {
     AppThemeColors(
-      background = DeepNavy,
-      surface = DarkSurface,
+      background = MidnightObsidian,
+      surface = VelvetViolet,
       surfaceElevated = DarkSurfaceElevated,
       surfaceBorder = DarkSurfaceBorder,
-      textPrimary = TextPrimary,
-      textSecondary = TextSecondary,
-      textTertiary = TextTertiary,
-      textDisabled = TextDisabled,
-      accentCyan = CrimsonNeon,
-      accentViolet = CrimsonWine,
-      accentAmber = EnergyAmber,
-      clockNeonRed = NeonRed,
-      clockNeonPurple = NeonPurple,
+      textPrimary = Color.White,
+      textSecondary = Color.White,
+      textTertiary = Color(0xFFF3E8FF),
+      textDisabled = Color(0xFFD4BFFF),
+      accentCyan = RadiantGold,
+      accentViolet = NeonViolet,
+      accentAmber = RadiantGold,
+      clockNeonRed = RadiantGold,
+      clockNeonPurple = NeonViolet,
+      darkNavy = MidnightObsidian,
+      darkPlum = VelvetViolet,
+      darkWine = DarkSurfaceElevated,
+      darkCrimson = NeonViolet,
       isDark = true
     )
   } else {
@@ -217,7 +221,7 @@ fun MyApplicationTheme(
     SideEffect {
       val window = (view.context as? Activity)?.window
       if (window != null) {
-        val barColor = (if (darkTheme) DeepNavy else LightBackground).toArgb()
+        val barColor = (if (darkTheme) MidnightObsidian else LightBackground).toArgb()
         window.statusBarColor = barColor
         window.navigationBarColor = barColor
         val controller = WindowCompat.getInsetsController(window, view)
@@ -235,4 +239,3 @@ fun MyApplicationTheme(
     )
   }
 }
-

@@ -66,6 +66,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -473,15 +474,16 @@ fun AlarmRingingScreen(
               }
             },
             shape = RoundedCornerShape(14.dp),
-            colors = ButtonDefaults.outlinedButtonColors(contentColor = EnergyAmber),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White),
             border = ButtonDefaults.outlinedButtonBorder.copy(brush = androidx.compose.ui.graphics.SolidColor(EnergyAmber)),
             modifier = Modifier.testTag("snooze_alarm_button")
           ) {
-            Icon(Icons.Default.Snooze, contentDescription = null, modifier = Modifier.size(18.dp))
+            Icon(Icons.Default.Snooze, contentDescription = null, tint = Color.White, modifier = Modifier.size(18.dp))
             Spacer(modifier = Modifier.width(8.dp))
             Text(
               text = "SNOOZE $snoozeMins MIN (${maxSnoozes - snoozeCount} left)",
-              fontWeight = FontWeight.Bold
+              fontWeight = FontWeight.Bold,
+              color = Color.White
             )
           }
         } else {
