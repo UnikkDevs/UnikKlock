@@ -1114,58 +1114,6 @@ fun SettingsScreen(
               }
             }
           }
-
-          Spacer(modifier = Modifier.height(12.dp))
-
-          // Palette swatch preview
-          val swatches = if (themeColors.isDark) {
-            listOf(
-              Triple("Obsidian", themeColors.darkNavy, Color.White),
-              Triple("Violet", themeColors.darkPlum, Color.White),
-              Triple("Neon", themeColors.darkWine, Color.White),
-              Triple("Gold", themeColors.accentAmber, Color(0xFF090040))
-            )
-          } else {
-            listOf(
-              Triple("Mint", themeColors.pastelMint, Color(0xFF1F1A3A)),
-              Triple("Periwinkle", themeColors.pastelPeriwinkle, Color(0xFF1F1A3A)),
-              Triple("Lavender", themeColors.pastelLavender, Color(0xFF1F1A3A)),
-              Triple("Lilac", themeColors.pastelLilac, Color(0xFF1F1A3A))
-            )
-          }
-
-          Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically
-          ) {
-            swatches.forEach { (name, color, textColor) ->
-              Row(
-                modifier = Modifier
-                  .clip(RoundedCornerShape(8.dp))
-                  .background(color.copy(alpha = if (themeColors.isDark) 0.9f else 0.85f))
-                  .border(1.dp, themeColors.surfaceBorder, RoundedCornerShape(8.dp))
-                  .padding(horizontal = 8.dp, vertical = 4.dp),
-                verticalAlignment = Alignment.CenterVertically
-              ) {
-                Box(
-                  modifier = Modifier
-                    .size(10.dp)
-                    .clip(CircleShape)
-                    .background(color)
-                    .border(0.5.dp, if (themeColors.isDark) Color.White.copy(alpha = 0.3f) else Color.Black.copy(alpha = 0.2f), CircleShape)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(
-                  text = name,
-                  style = MaterialTheme.typography.labelSmall,
-                  color = textColor,
-                  fontWeight = FontWeight.Bold,
-                  fontSize = 10.sp
-                )
-              }
-            }
-          }
         }
       }
     }
