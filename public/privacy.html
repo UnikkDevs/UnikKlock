@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - UnikKlock</title>
+  <style>
+    :root {
+      --bg: #090040;
+      --card-bg: #150E56;
+      --text: #F4F0FF;
+      --text-muted: #B8B0D3;
+      --accent: #B13BFF;
+      --gold: #FFCC00;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(177, 59, 255, 0.25);
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 20px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    p {
+      margin-bottom: 14px;
+      color: var(--text-muted);
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    strong {
+      color: var(--text);
+    }
+    .highlight-box {
+      background: rgba(177, 59, 255, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .contact-box {
+      background: rgba(255, 204, 0, 0.1);
+      border: 1px solid rgba(255, 204, 0, 0.3);
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Privacy Policy for UnikKlock</h1>
+    <div class="subtitle">Effective Date: September 24, 2026 &bull; Last Updated: September 24, 2026</div>
+
+    <div class="highlight-box">
+      <p><strong>Summary:</strong> UnikKlock is an offline-first alarm clock and time utility app. We do <strong>not</strong> collect, transmit, store, sell, or share any personal data, identifiers, or usage telemetry with any external servers or third parties.</p>
+    </div>
+
+    <h2>1. Information We Do Not Collect</h2>
+    <p>UnikKlock does not require you to create an account, register, or provide personal details such as your name, email address, phone number, location, or payment information. We do not use third-party tracking libraries, analytics SDKs, advertising frameworks, or cloud databases.</p>
+
+    <h2>2. Local On-Device Data Storage</h2>
+    <p>All data generated when using UnikKlock is stored exclusively on your device using a local SQLite database (Android Room):</p>
+    <ul>
+      <li><strong>Alarm Schedules:</strong> Hour, minute, recurring days, tone preferences, and challenge types.</li>
+      <li><strong>Completion History:</strong> Wake-up timestamps, challenge completion durations, and snooze counts used to display your on-device wake statistics.</li>
+      <li><strong>User Preferences:</strong> Dark/light theme choices and sound settings.</li>
+    </ul>
+    <p>This data remains strictly on your device and is deleted if you uninstall the application or clear app storage via Android system settings.</p>
+
+    <h2>3. Device Permissions & How They Are Used</h2>
+    <p>UnikKlock requests only standard Android permissions required to function as an alarm clock:</p>
+    <ul>
+      <li><strong>Exact Alarms (<code>SCHEDULE_EXACT_ALARM</code> / <code>USE_EXACT_ALARM</code>):</strong> Required by Android to trigger your alarms precisely at the scheduled time.</li>
+      <li><strong>Notifications (<code>POST_NOTIFICATIONS</code>):</strong> Required to show upcoming alarm notifications, active timer updates, and snooze alerts.</li>
+      <li><strong>Foreground Service (<code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code>):</strong> Required to play alarm audio and keep wake challenges active even when the screen is locked.</li>
+      <li><strong>Vibration (<code>VIBRATE</code>):</strong> Used to vibrate the device during an alarm ringing state.</li>
+      <li><strong>Wake Lock (<code>WAKE_LOCK</code>):</strong> Allows the screen to illuminate when an alarm fires so you can interact with the challenge.</li>
+      <li><strong>Boot Receiver (<code>RECEIVE_BOOT_COMPLETED</code>):</strong> Automatically reschedules your configured alarms when your device restarts.</li>
+    </ul>
+
+    <h2>4. Third-Party Services</h2>
+    <p>UnikKlock does not integrate with third-party tracking, advertising, or cloud analytics providers (e.g., Google Analytics, Firebase Analytics, or ad networks).</p>
+
+    <h2>5. Children's Privacy</h2>
+    <p>UnikKlock does not collect any personal information from anyone, including children under the age of 13. It is fully safe for users of all ages.</p>
+
+    <h2>6. Changes to This Privacy Policy</h2>
+    <p>If we update this Privacy Policy in future versions of UnikKlock, the updated policy will be posted on this page with a revised effective date.</p>
+
+    <div class="contact-box">
+      <h2>Contact Us</h2>
+      <p>If you have any questions or feedback regarding this Privacy Policy or UnikKlock, please contact us at:</p>
+      <p><strong>Email:</strong> nikhilkathait666@gmail.com</p>
+    </div>
+  </div>
+</body>
+</html>
