@@ -22,10 +22,19 @@ abstract class AppDatabase : RoomDatabase() {
 
     fun getInstance(context: Context): AppDatabase {
       return INSTANCE ?: synchronized(this) {
+        val appContext = context.applicationContext
+        val oldDbFile = appContext.getDatabasePath("wakequest_database")
+        val newDbFile = appContext.getDatabasePath("unikklock_database")
+        if (oldDbFile.exists() && !newDbFile.exists()) {
+          try {
+            oldDbFile.copyTo(newDbFile, overwrite = false)
+          } catch (_: Exception) {}
+        }
+
         val instance = Room.databaseBuilder(
-          context.applicationContext,
+          appContext,
           AppDatabase::class.java,
-          "wakequest_database"
+          "unikklock_database"
         )
           .fallbackToDestructiveMigration()
           .build()

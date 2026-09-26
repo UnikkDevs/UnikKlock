@@ -80,9 +80,12 @@ class MainActivity : ComponentActivity() {
 
     setContent {
       val context = LocalContext.current
-      val sharedPrefs = remember { context.getSharedPreferences("wakequest_prefs", Context.MODE_PRIVATE) }
+      val oldPrefs = remember { context.getSharedPreferences("wakequest_prefs", Context.MODE_PRIVATE) }
+      val sharedPrefs = remember { context.getSharedPreferences("unikklock_prefs", Context.MODE_PRIVATE) }
       val initialThemeStr = remember {
-        sharedPrefs.getString("theme_mode", AppThemeMode.DARK.name) ?: AppThemeMode.DARK.name
+        sharedPrefs.getString("theme_mode", null)
+          ?: oldPrefs.getString("theme_mode", AppThemeMode.DARK.name)
+          ?: AppThemeMode.DARK.name
       }
       var themeMode by remember {
         mutableStateOf(
@@ -95,7 +98,9 @@ class MainActivity : ComponentActivity() {
       }
 
       val initialClockColorStr = remember {
-        sharedPrefs.getString("clock_color_mode", ClockColorMode.NEON_DUO.name) ?: ClockColorMode.NEON_DUO.name
+        sharedPrefs.getString("clock_color_mode", null)
+          ?: oldPrefs.getString("clock_color_mode", ClockColorMode.NEON_DUO.name)
+          ?: ClockColorMode.NEON_DUO.name
       }
       var clockColorMode by remember {
         mutableStateOf(
@@ -116,7 +121,7 @@ class MainActivity : ComponentActivity() {
 
       MyApplicationTheme(darkTheme = isDarkTheme) {
         CompositionLocalProvider(LocalClockColorMode provides clockColorMode) {
-          WakeQuestApp(
+          UnikKlockApp(
             viewModel = viewModel,
             currentThemeMode = themeMode,
             currentClockColorMode = clockColorMode,
@@ -137,7 +142,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun WakeQuestApp(
+fun UnikKlockApp(
   viewModel: MainViewModel,
   currentThemeMode: AppThemeMode = AppThemeMode.DARK,
   currentClockColorMode: ClockColorMode = ClockColorMode.NEON_DUO,
@@ -154,9 +159,11 @@ fun WakeQuestApp(
   var currentTab by remember { mutableStateOf(NavigationTab.DASHBOARD) }
 
   // First launch onboarding check
-  val sharedPrefs = remember { context.getSharedPreferences("wakequest_prefs", Context.MODE_PRIVATE) }
+  val oldPrefs = remember { context.getSharedPreferences("wakequest_prefs", Context.MODE_PRIVATE) }
+  val sharedPrefs = remember { context.getSharedPreferences("unikklock_prefs", Context.MODE_PRIVATE) }
   var showOnboarding by remember {
-    mutableStateOf(!sharedPrefs.getBoolean("onboarding_completed", false))
+    val completed = sharedPrefs.getBoolean("onboarding_completed", false) || oldPrefs.getBoolean("onboarding_completed", false)
+    mutableStateOf(!completed)
   }
 
   // Edit / Create alarm sheet state

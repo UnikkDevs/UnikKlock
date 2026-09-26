@@ -25,10 +25,11 @@ import kotlinx.coroutines.launch
 
 class AlarmAudioService : Service() {
   companion object {
-    const val CHANNEL_ID = "wakequest_alarm_channel"
+    const val CHANNEL_ID = "unikklock_alarm_channel"
     const val NOTIFICATION_ID = 1001
-    const val ACTION_START_ALARM = "com.aistudio.wakequest.ACTION_START_ALARM"
-    const val ACTION_STOP_ALARM = "com.aistudio.wakequest.ACTION_STOP_ALARM"
+    const val ACTION_START_ALARM = "com.aistudio.unikklock.ACTION_START_ALARM"
+    const val ACTION_STOP_ALARM = "com.aistudio.unikklock.ACTION_STOP_ALARM"
+    const val LEGACY_ACTION_STOP_ALARM = "com.aistudio.wakequest.ACTION_STOP_ALARM"
     private const val TAG = "AlarmAudioService"
 
     var isRinging: Boolean = false
@@ -47,7 +48,7 @@ class AlarmAudioService : Service() {
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
     val action = intent?.action ?: ACTION_START_ALARM
 
-    if (action == ACTION_STOP_ALARM) {
+    if (action == ACTION_STOP_ALARM || action == LEGACY_ACTION_STOP_ALARM) {
       stopAlarm()
       stopSelf()
       return START_NOT_STICKY
@@ -139,7 +140,7 @@ class AlarmAudioService : Service() {
     val text = if (isSnooze) "Snooze Alarm Active • Complete challenge to dismiss" else "Active Challenge • Wake your brain to stop alarm"
 
     return NotificationCompat.Builder(this, CHANNEL_ID)
-      .setSmallIcon(R.drawable.ic_wakequest_logo)
+      .setSmallIcon(R.drawable.ic_unikklock_logo)
       .setContentTitle(title)
       .setContentText(text)
       .setPriority(NotificationCompat.PRIORITY_MAX)

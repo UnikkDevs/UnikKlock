@@ -394,7 +394,7 @@ fun DashboardScreen(
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-              text = "Tap + Add Alarm to schedule your wake-up quest.",
+              text = "Tap + Add Alarm to schedule your wake-up alarm.",
               style = MaterialTheme.typography.bodyMedium,
               color = TextSecondary,
               textAlign = TextAlign.Center

@@ -13,7 +13,8 @@ import com.example.alarm.service.AlarmAudioService
 
 class AlarmReceiver : BroadcastReceiver() {
   companion object {
-    const val ACTION_TRIGGER_ALARM = "com.aistudio.wakequest.ACTION_ALARM_TRIGGER"
+    const val ACTION_TRIGGER_ALARM = "com.aistudio.unikklock.ACTION_ALARM_TRIGGER"
+    const val LEGACY_ACTION_TRIGGER_ALARM = "com.aistudio.wakequest.ACTION_ALARM_TRIGGER"
     private const val TAG = "AlarmReceiver"
   }
 
@@ -28,7 +29,7 @@ class AlarmReceiver : BroadcastReceiver() {
     val powerManager = context.getSystemService(Context.POWER_SERVICE) as? PowerManager
     val wakeLock = powerManager?.newWakeLock(
       PowerManager.PARTIAL_WAKE_LOCK or PowerManager.ACQUIRE_CAUSES_WAKEUP,
-      "wakequest:AlarmWakeLock"
+      "unikklock:AlarmWakeLock"
     )
     wakeLock?.acquire(3 * 60 * 1000L) // 3 minutes timeout safety
 

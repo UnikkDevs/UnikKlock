@@ -17,7 +17,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WakeQuestApplication : Application() {
+class UnikKlockApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
@@ -46,10 +46,23 @@ class WakeQuestApplication : Application() {
   }
 
   private fun seedDefaultAlarmsIfEmpty() {
+    val prefs = getSharedPreferences("unikklock_prefs", Context.MODE_PRIVATE)
+    val oldPrefs = getSharedPreferences("wakequest_prefs", Context.MODE_PRIVATE)
+    val hasInitialized = prefs.getBoolean("has_seeded_initial_alarms", false) || oldPrefs.getBoolean("has_seeded_initial_alarms", false)
+    val onboardingCompleted = prefs.getBoolean("onboarding_completed", false) || oldPrefs.getBoolean("onboarding_completed", false)
+    if (hasInitialized || onboardingCompleted) {
+      return
+    }
+
     CoroutineScope(Dispatchers.IO).launch {
+      // Mark as initialized immediately so this never triggers again
+      prefs.edit().putBoolean("has_seeded_initial_alarms", true).apply()
+      oldPrefs.edit().putBoolean("has_seeded_initial_alarms", true).apply()
+
       val db = AppDatabase.getInstance(applicationContext)
-      val existing = db.alarmDao().getAllEnabledAlarms()
-      if (existing.isEmpty()) {
+      // Only seed if the database is truly brand new with 0 alarms
+      val count = db.alarmDao().getAlarmCount()
+      if (count == 0) {
         // Seed 2 initial polished alarms
         val default1 = AlarmEntity(
           hour = 7,
@@ -70,7 +83,7 @@ class WakeQuestApplication : Application() {
         val default2 = AlarmEntity(
           hour = 8,
           minute = 30,
-          name = "Weekend Quest",
+          name = "Weekend Routine",
           isEnabled = false,
           daysOfWeek = "1,7", // Sat-Sun
           soundType = SoundType.DIGITAL.id,

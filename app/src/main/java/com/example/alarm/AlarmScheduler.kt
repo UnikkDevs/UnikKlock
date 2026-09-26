@@ -97,27 +97,48 @@ object AlarmScheduler {
     val requestCodeMain = alarmId.toInt() * 10
     val requestCodeSnooze = alarmId.toInt() * 10 + 1
 
-    val pendingIntentMain = PendingIntent.getBroadcast(
-      context,
-      requestCodeMain,
-      intent,
-      PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
-    )
-    if (pendingIntentMain != null) {
+    try {
+      val pendingIntentMain = PendingIntent.getBroadcast(
+        context,
+        requestCodeMain,
+        intent,
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+      )
       alarmManager.cancel(pendingIntentMain)
       pendingIntentMain.cancel()
+    } catch (e: Exception) {
+      Log.e(TAG, "Error cancelling main alarm pending intent: ${e.message}")
     }
 
-    val pendingIntentSnooze = PendingIntent.getBroadcast(
-      context,
-      requestCodeSnooze,
-      intent,
-      PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
-    )
-    if (pendingIntentSnooze != null) {
+    try {
+      val pendingIntentSnooze = PendingIntent.getBroadcast(
+        context,
+        requestCodeSnooze,
+        intent,
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+      )
       alarmManager.cancel(pendingIntentSnooze)
       pendingIntentSnooze.cancel()
+    } catch (e: Exception) {
+      Log.e(TAG, "Error cancelling snooze pending intent: ${e.message}")
     }
+
+    try {
+      val showIntent = Intent(context, MainActivity::class.java).apply {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+      }
+      val showPendingIntent = PendingIntent.getActivity(
+        context,
+        requestCodeMain + 100000,
+        showIntent,
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+      )
+      alarmManager.cancel(showPendingIntent)
+      showPendingIntent.cancel()
+    } catch (e: Exception) {
+      // Ignore
+    }
+    Log.d(TAG, "Cancelled alarm for id=$alarmId")
   }
 
   fun calculateNextTriggerTime(hour: Int, minute: Int, repeatDays: List<Int>): Long {

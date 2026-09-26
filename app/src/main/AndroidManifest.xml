@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
     <application
-        android:name=".WakeQuestApplication"
+        android:name=".UnikKlockApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -59,6 +59,7 @@
             android:name=".alarm.receiver.AlarmReceiver"
             android:exported="false">
             <intent-filter>
+                <action android:name="com.aistudio.unikklock.ACTION_ALARM_TRIGGER" />
                 <action android:name="com.aistudio.wakequest.ACTION_ALARM_TRIGGER" />
             </intent-filter>
         </receiver>

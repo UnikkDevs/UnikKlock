@@ -124,7 +124,7 @@ object AppTheme {
     get() = LocalAppThemeColors.current
 }
 
-private val WakeQuestDarkColorScheme = darkColorScheme(
+private val UnikKlockDarkColorScheme = darkColorScheme(
   primary = RadiantGold,
   onPrimary = MidnightObsidian,
   primaryContainer = VelvetViolet,
@@ -146,7 +146,7 @@ private val WakeQuestDarkColorScheme = darkColorScheme(
   onError = Color.White
 )
 
-private val WakeQuestLightColorScheme = lightColorScheme(
+private val UnikKlockLightColorScheme = lightColorScheme(
   primary = PastelLilacDeep,
   onPrimary = Color.White,
   primaryContainer = PastelPeriwinkle,
@@ -174,7 +174,7 @@ fun MyApplicationTheme(
   dynamicColor: Boolean = false,
   content: @Composable () -> Unit
 ) {
-  val colorScheme = if (darkTheme) WakeQuestDarkColorScheme else WakeQuestLightColorScheme
+  val colorScheme = if (darkTheme) UnikKlockDarkColorScheme else UnikKlockLightColorScheme
 
   val appThemeColors = if (darkTheme) {
     AppThemeColors(
